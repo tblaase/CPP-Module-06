@@ -6,12 +6,13 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:37:12 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/07 16:37:17 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/07 17:17:59 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Conversion.hpp"
 
+static std::string types[] = {"char", "int", "float", "double", "impossible", "nan"};
 
 // Constructors
 Conversion::Conversion()
@@ -30,7 +31,6 @@ Conversion::Conversion(const Conversion &src)
 Conversion::~Conversion()
 {
 	std::cout << "Conversion Deconstructor called" << std::endl;
-	/*CODE*/
 }
 
 // Overloaded Operators
@@ -45,6 +45,17 @@ Conversion &Conversion::operator=(const Conversion &src)
 }
 
 // Public Methods
+
+// // Exceptions
+// const char *Conversion::ImpossibleException::what(void) const throw()
+// {
+// 	return ("Impossible to print");
+// };
+
+// const char *Form::GradeTooHighException::what(void) const throw()
+// {
+// 	return ("Grade too high");
+// };
 
 // Getter
 

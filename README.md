@@ -18,7 +18,7 @@ My solution for CPP Module 06 of the Common core of 42 school.
 
 ## About this Module
 The Scope of this Module was to get to know C++ further and come in closer contact with inheritance for classes:
-- ex00: Introduction to scalar-types and their conversion
+- ex00: Introduction to static casting and converion of scalar types
 - ex01: Serialization
 - ex02: Identification of real types of classes
 

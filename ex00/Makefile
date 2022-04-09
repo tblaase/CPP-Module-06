@@ -6,7 +6,7 @@
 #    By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 16:26:52 by tblaase           #+#    #+#              #
-#    Updated: 2022/04/08 11:49:22 by tblaase          ###   ########.fr        #
+#    Updated: 2022/04/09 13:22:14 by tblaase          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=	convert
 
 CXX			=	c++
 
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 #directories
 SRC_DIR		=	src/

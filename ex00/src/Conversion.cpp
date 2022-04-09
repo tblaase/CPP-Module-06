@@ -6,32 +6,31 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:37:12 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/08 11:56:21 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/09 13:16:15 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Conversion.hpp"
 
-// static std::string types[] = {"char", "int", "float", "double", "impossible", "nan"};
-
 // Constructors
 Conversion::Conversion()
 {
 	std::cout << "Conversion Default Constructor called" << std::endl;
-	/*CODE*/
 }
 
 Conversion::Conversion(const std::string input): _input(input)
 {
 	std::cout << "Conversion Constructor for " << this->getInput() << std::endl;
+	this->_double = atof(this->getInput().c_str());
 	this->convertInput();
 	this->printOutput();
 }
 
-Conversion::Conversion(const Conversion &src)
+Conversion::Conversion(const Conversion &src): _input(src.getInput())
 {
 	std::cout << "Conversion Copy Constructor called" << std::endl;
 	*this = src;
+	this->printOutput();
 }
 
 // Deconstructors
@@ -47,7 +46,11 @@ Conversion &Conversion::operator=(const Conversion &src)
 	if (this == &src)
 		return *this;
 
-	/*CODE*/
+	this->_type = src.getType();
+	this->_char = src.getChar();
+	this->_int = src.getInt();
+	this->_float = src.getFloat();
+	this->_double = src.getDouble();
 	return *this;
 }
 
@@ -62,7 +65,7 @@ int	Conversion::checkInput()
 	}
 	else if (this->getInput().length() == 1 &&
 		(this->getInput()[0] == '+' || this->getInput()[0] == '-' ||
-		this->getInput()[0] == 'f' || this->getInput()[0] == '.') )
+		this->getInput()[0] == 'f' || this->getInput()[0] == '.'))
 	{
 		return (CHAR);
 	}
@@ -122,7 +125,7 @@ void	Conversion::convertInput(void)
 	if (this->getType() == NAN_INF || this->getType() == IMPOSSIBLE)
 		return ;
 	int i;
-	for (i = 0; i < 3; i++)
+	for (i = 0; i < 4; i++)
 	{
 		if (this->getType() == types[i])
 		{
@@ -136,24 +139,76 @@ void	Conversion::convertInput(void)
 
 void	Conversion::printOutput(void)const
 {
-	if (this->getChar() < 32 || this->getChar() > 126)
-		std::cout << "char: Non displayable" << std::endl;
+	// display char
+	if (this->getType() != IMPOSSIBLE && this->getType() != NAN_INF && this->getDouble() >= std::numeric_limits<int>::min() && this->getDouble() <= std::numeric_limits<int>::max())
+	{
+		if (isprint(this->getChar())/*this->getChar() >= 32 && this->getChar() <= 126*/)
+			std::cout << "char: '" << this->getChar() << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+	}
 	else
-		std::cout << "char: " << this->getChar() << std::endl;
-	std::cout << "int: " << this->getInt() << std::endl;
-	std::cout << "float: " << this->getFloat() << "f" << std::endl;
-	std::cout << "double: " << this->getDouble() << std::endl;
+		std::cout << "char: impossible" << std::endl;
+
+	// display int
+	if (this->getType() != IMPOSSIBLE && this->getType() != NAN_INF && this->getDouble() >= std::numeric_limits<int>::min() && this->getDouble() <= std::numeric_limits<int>::max())
+	{
+		std::cout << "int: " << this->getInt() << std::endl;
+	}
+	else
+		std::cout << "int: impossible" << std::endl;
+
+	// display float
+	if (this->getType() != NAN_INF && this->getType() != IMPOSSIBLE)
+	{
+		std::cout << "float: " << this->getFloat();
+		if (this->getFloat() - this->getInt() == 0)
+			std::cout << ".0f" << std::endl;
+		else
+			std::cout << "f" << std::endl;
+	}
+	else
+	{
+		if (this->getType() == IMPOSSIBLE)
+			std::cout << "float: impossible" << std::endl;
+		else if (this->getInput() == "nan" || this->getInput() == "nanf")
+			std::cout << "float: nanf" << std::endl;
+		else if (this->getInput()[0] == '+')
+			std::cout << "float: +inff" << std::endl;
+		else
+			std::cout << "float: -inff" << std::endl;
+	}
+
+	// display double
+	if (this->getType() != NAN_INF && this->getType() != IMPOSSIBLE)
+	{
+		std::cout << "double: " << this->getDouble();
+		if (this->getDouble() < std::numeric_limits<int>::min() || this->getDouble() > std::numeric_limits<int>::max() ||
+			this->getDouble() - this->getInt() == 0)
+		{
+			std::cout << ".0" << std::endl;
+		}
+		else
+			std::cout << std::endl;
+	}
+	else
+	{
+		if (this->getType() == IMPOSSIBLE)
+			std::cout << "double: impossible" << std::endl;
+		else if (this->getInput() == "nan" || this->getInput() == "nanf")
+			std::cout << "double: nan" << std::endl;
+		else if (this->getInput()[0] == '+')
+			std::cout << "double: +inf" << std::endl;
+		else
+			std::cout << "double: -inf" << std::endl;
+	}
 }
+
 // Exceptions
 const char *Conversion::ImpossibleException::what(void) const throw()
 {
 	return ("Impossible to print");
 };
-
-// const char *Form::GradeTooHighException::what(void) const throw()
-// {
-// 	return ("Grade too high");
-// };
 
 // Getter
 std::string	Conversion::getInput(void)const

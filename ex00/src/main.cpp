@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:37:18 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/07 19:26:18 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/09 13:20:56 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,17 @@ int main(int argc, char **argv)
 	}
 	try
 	{
-		Conversion	conversion(argv[1]);
+		Conversion conversion(argv[1]);
+		// try
+		// {
+		// 	Conversion copy(conversion);
+		// }
+		// catch(const std::exception& e)
+		// {
+		// 	std::cerr << e.what() << std::endl;
+		// }
 	}
-	catch(const std::exception& e)
+	catch(const Conversion::ImpossibleException& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}

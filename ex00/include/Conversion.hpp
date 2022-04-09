@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:37:02 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/08 11:47:00 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/09 13:09:47 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,5 @@ class Conversion
 	public:
 		virtual const char *what() const throw();
 	};
-
-	// class GradeTooHighException : public std::exception
-	// {
-	// public:
-	// 	virtual const char *what() const throw();
-	// };
-
 	// Public Methods
 };

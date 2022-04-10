@@ -6,7 +6,7 @@
 #    By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 13:23:47 by tblaase           #+#    #+#              #
-#    Updated: 2022/04/09 14:03:22 by tblaase          ###   ########.fr        #
+#    Updated: 2022/04/10 15:41:52 by tblaase          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=	serialize
 
 CXX			=	c++
 
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS	=	-Wall -Werror -Wextra
 
 #directories
 SRC_DIR		=	src/

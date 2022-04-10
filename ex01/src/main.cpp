@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 14:02:31 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/10 16:05:24 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:10:45 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int main()
 
 	Serializer a;
 
-	uintptr_t raw = a.serialize(&ptr);
-	Data *reserialized_struct = a.unserialize(raw);
+	Data *reserialized_struct = a.unserialize(a.serialize(&ptr));
 
 	std::cout << "Here is the reserialized structs:" <<
 				"\n\taddress: " << reserialized_struct <<

@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 14:02:17 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/10 15:45:42 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:27:11 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // Includes
 #include <string>
 #include <iostream>
+#include <stdint.h> // otherwise uintptr_t won't compile with c++98 standard
 
 // classes
 

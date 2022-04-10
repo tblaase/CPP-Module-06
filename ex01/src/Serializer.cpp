@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 14:02:44 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/09 14:03:09 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:45:37 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 Serializer::Serializer()
 {
 	std::cout << "Serializer Default Constructor called" << std::endl;
-	/*CODE*/
 }
 
 Serializer::Serializer(const Serializer &src)
@@ -43,8 +42,25 @@ Serializer &Serializer::operator=(const Serializer &src)
 }
 
 // Public Methods
+uintptr_t	Serializer::serialize(Data *ptr)
+{
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
 
+Data	*Serializer::unserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data *>(raw));
+}
 // Getter
 
 // Setter
 
+// Ostream overload
+// std::ostream	&operator<<(std::ostream &o, Data *a)
+// {
+// 	o <<
+// 	"\tName: " << a->name <<
+// 	"\n\tage: " << a->age <<
+// 	std::endl;
+// 	return (o);
+// }

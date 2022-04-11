@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:37:12 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/11 17:38:29 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 17:54:20 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,20 @@ int	Conversion::checkInput()
 	else if (this->getInput().find_first_not_of("+-0123456789") == std::string::npos)
 		return (INT);
 	else if (this->getInput().find_first_not_of("+-0123456789.") == std::string::npos)
-		return (DOUBLE);
+	{
+		if (this->getInput().find_first_of(".") != this->getInput().find_last_of(".") ||
+			this->getInput()[this->getInput().find_first_of(".") + 1] == '\0')
+			return (ERROR);
+		else
+			return (DOUBLE);
+	}
 	else if (this->getInput().find_first_not_of("+-0123456789.f") == std::string::npos)
 	{
 		if (this->getInput().rbegin()[0] != 'f')
 			return (IMPOSSIBLE);
-		else if (this->getInput().find_first_of("f") != this->getInput().find_last_of("f"))
+		else if (this->getInput().find_first_of("f") != this->getInput().find_last_of("f") ||
+			this->getInput().find_first_of(".") != this->getInput().find_last_of(".") ||
+			this->getInput().find_first_of("f") - this->getInput().find_first_of(".") == 1)
 			return (ERROR);
 		else
 			return (FLOAT);

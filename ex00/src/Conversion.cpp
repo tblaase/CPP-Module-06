@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:37:12 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/09 13:16:15 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 17:38:29 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	Conversion::checkInput()
 	{
 		if (this->getInput().rbegin()[0] != 'f')
 			return (IMPOSSIBLE);
+		else if (this->getInput().find_first_of("f") != this->getInput().find_last_of("f"))
+			return (ERROR);
 		else
 			return (FLOAT);
 	}
@@ -207,7 +209,7 @@ void	Conversion::printOutput(void)const
 // Exceptions
 const char *Conversion::ImpossibleException::what(void) const throw()
 {
-	return ("Impossible to print");
+	return ("Error: Impossible to print or input not convertable");
 };
 
 // Getter

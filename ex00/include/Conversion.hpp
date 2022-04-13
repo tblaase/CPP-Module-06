@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:37:02 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/13 10:29:50 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/13 13:49:29 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 #include <iostream>
 #include <limits>
+#include <climits>
 #include <cstdlib>
 #include <cstring>
 #include <cctype>

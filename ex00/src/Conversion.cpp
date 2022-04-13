@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:37:12 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/13 10:50:01 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/13 11:46:39 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ int	Conversion::checkInput()
 	{
 		return (CHAR);
 	}
-	else if (this->getInput()[this->getInput().find_first_of("+-") + 1] == '-' ||
-		this->getInput()[this->getInput().find_first_of("+-") + 1] == '+') // catches `--0`, `+-` and `-+`
+	else if (this->getInput().find_first_of("+-") != this->getInput().find_last_of("+-")) // catches any multiple or mixed use of + and -
 		return (ERROR);
 	else if (this->getInput().find_first_not_of("+-0123456789") == std::string::npos)
 		return (INT);

@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:37:18 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/11 17:38:33 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/13 10:29:55 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 		// 	std::cerr << e.what() << std::endl;
 		// }
 	}
-	catch(const Conversion::ImpossibleException& e)
+	catch(const Conversion::ErrorException& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}

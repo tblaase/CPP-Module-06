@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:37:02 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/09 13:09:47 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/13 10:29:50 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@
 #include <cctype>
 
 #define NAN_INF 1
-#define IMPOSSIBLE 2
-#define ERROR 3
-#define CHAR 4
-#define INT 5
-#define FLOAT 6
-#define DOUBLE 7
+#define ERROR 2
+#define CHAR 3
+#define INT 4
+#define FLOAT 5
+#define DOUBLE 6
 
 // classes
 
@@ -74,7 +73,7 @@ class Conversion
 		Conversion &operator=(const Conversion &src);
 
 	//Exceptions
-	class ImpossibleException : public std::exception
+	class ErrorException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw();
